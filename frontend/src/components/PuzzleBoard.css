@@ -1,0 +1,8 @@
+.puzzle-board {
+    height: 500px;
+    width: 500px;
+    display: grid;
+    gap: 6px;
+    padding: 4px;
+    background: #bbbbbb;
+}

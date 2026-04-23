@@ -1,0 +1,95 @@
+:root {
+  --button-bg: #868686;
+  --button-border: #6d6d6d;
+  --button-pressed: #818181;
+  --button-txt: #0f0f0f;
+  --button-inset-dark: #424242;
+  --button-inset-light: #c2c2c2;
+
+  --panel-bg: #aaaaaa;
+  --panel-border: #a1a1a1;
+  --panel-border-style: groove;
+  --panel-border-width: 8px;
+  --panel-padding: 0px;
+  --panel-text: #202020;
+  --panel-border-radius: 2px;
+
+  --timer-bg: #cfcfcf;
+
+  --slider-rail: #6b6b6b;
+  --slider-marks: #2e2e2e;
+
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #dddddd;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg)''
+}
+
+button {
+  background-color: var(--button-bg);
+  border-style: outset;
+  border-width: 3px;
+  border-color: var(--button-border);
+  color: var(--button-txt);
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 35px;
+}
+
+button:active {
+  background-color: var(--button-pressed);
+  border-style: solid;
+  border-top-color: var(--button-inset-dark);
+  border-left-color: var(--button-inset-dark);
+  border-right-color: var(--button-inset-light);
+  border-bottom-color: var(--button-inset-light);
+  box-sizing: border-box;
+}
+
+button.active {
+  background-color: var(--button-pressed);
+  border-style: solid;
+  border-top-color: var(--button-inset-dark);
+  border-left-color: var(--button-inset-dark);
+  border-right-color: var(--button-inset-light);
+  border-bottom-color: var(--button-inset-light);
+  box-sizing: border-box;
+}
+
+button[disabled] {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

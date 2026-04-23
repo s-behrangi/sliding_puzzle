@@ -1,0 +1,31 @@
+.control-panel {
+    width: 100%;
+    border-style: var(--panel-border-style);
+    border-width: var(--panel-border-width);
+    border-color: var(--panel-border);
+    border-radius: var(--panel-border-radius);
+    padding: var(--panel-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--panel-bg);
+    box-sizing: border-box;
+}
+
+.control-panel h1 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 24px;
+    color: var(--panel-text);
+    font-family: monospace;
+}
+
+.control-panel-button-col {
+    display: flex;
+    flex-direction: row;
+}
+
+.control-panel button {
+    height: 30px;
+    width:100%;
+}

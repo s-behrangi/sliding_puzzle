@@ -1,0 +1,32 @@
+.app {
+    margin: 20px auto;
+    width: 750px;
+}
+
+.top-panel {
+    width: 750px;
+    height: 500px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-direction: row;
+}
+
+.top-right-text {
+    font-size: small;
+}
+
+.top-right-text p {
+    margin: 0;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.top-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    width: 100%;
+    gap: 10px;
+}

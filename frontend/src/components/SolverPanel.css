@@ -1,0 +1,66 @@
+.solver-panel {
+    width: 100%;
+    border-style: var(--panel-border-style);
+    border-color: var(--panel-border);
+    border-width: var(--panel-border-width);
+    border-radius: var(--panel-border-radius);
+    box-sizing: border-box;
+    padding: var(--panel-padding);
+    background-color: var(--panel-bg);
+}
+
+.MuiTab-root {
+  text-transform: none;
+  min-width: 0;
+  font-weight: 400; /* Regular weight */
+  color: rgba(0, 0, 0, 0.85);
+  background-color: var(--button-bg);
+  border-width: 1px;
+  border-style: outset;
+}
+
+/* Hover state */
+.MuiTab-root:hover {
+  color: #000000;
+}
+
+/* Selected state (active tab) */
+.MuiTab-root.Mui-selected {
+  color: #000000;
+  background-color: var(--button-pressed);
+  border-color: black;
+  border: inset;
+  box-sizing: border-box;
+
+  font-weight: 500; /* Medium weight */
+}
+
+/* Focus visible state */
+.MuiTab-root.Mui-focusVisible {
+  background-color: #d1eaff;
+}
+
+.MuiTabs-indicator {
+    display: none;
+}
+
+/* Small screens and up (sm breakpoint = 600px by default) */
+@media (min-width: 600px) {
+  .MuiTab-root {
+    min-width: 0;
+  }
+}
+
+.solution-text {
+  height: 185px;
+  color: var(--panel-text);
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0px 5px 0px 5px;
+  text-align: left;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.restriction-text {
+  font-size: 12px;
+}

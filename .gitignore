@@ -1,0 +1,12 @@
+/target
+**/*.rs.bk
+
+/pkg/
+
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/src/pkg/
+
+.vscode/
+.DS_Store

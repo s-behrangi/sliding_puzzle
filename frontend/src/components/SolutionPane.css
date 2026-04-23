@@ -1,0 +1,28 @@
+.solution-pane {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--button-bg);
+}
+
+.solution-pane button {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    line-height: 1;
+}
+
+.sol-move-count {
+    width: 100px;
+    padding-right: 6px;
+    vertical-align: middle;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: right;
+    display: inline-block;
+    transform: translateY(3px);
+    color: var(--button-txt);
+    font-weight: 600;
+}

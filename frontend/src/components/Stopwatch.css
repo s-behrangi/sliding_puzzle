@@ -1,0 +1,27 @@
+.stopwatch {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content:space-between;
+    height: 33px;
+    padding: 0px 4px 0px 4px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.stopwatch button {
+    height: 90%;
+    box-sizing: border-box;
+    line-height: 20px;
+}
+
+.stopwatch .time {
+    height: 100%;
+    padding: 0px 5px 0px 5px;
+    border-style:groove;
+    background-color: var(--timer-bg);
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 28px;
+    font-weight: 700;
+}

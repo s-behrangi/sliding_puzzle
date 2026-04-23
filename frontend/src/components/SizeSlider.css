@@ -1,0 +1,67 @@
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 80%;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #4d4c4c;
+  border-radius: 0rem;
+  height: 3px;
+  width: 80%;
+  background-image: repeating-linear-gradient(90deg, #000, #000 2px, transparent 10px, transparent 8%);
+  background-size: 100% 100%;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -7.75px; /* Centers thumb on the track */
+  width: 20px;
+  height: 30px;
+  background: var(--button-bg);
+  border-radius: 0px; /* Forces rectangular shape */
+  border-width: 2px;
+  border-style: outset;
+  border-color: var(--button-border);
+  cursor: pointer;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #0c0c0c;
+  border-radius: 0rem;
+  height: 2px;
+  background-image: repeating-linear-gradient(90deg, #000, #000 10px, transparent 10px, transparent 25%);
+  background-size: 100% 100%;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #808080;
+  width: 20px;
+  height: 30px;
+  background: var(--button-bg);
+  border-radius: 0px; /* Forces rectangular shape */
+  border-width: 2px;
+  border-style: outset;
+  border-color: var(--button-border);
+  cursor: pointer;
+}
+
+input[type="range"]:focus {
+    outline: none;
+    box-shadow: none; /* Some browsers use box-shadow for focus */
+}
