@@ -25,7 +25,7 @@ const PuzzleBoard: React.FC<PuzzleBoardProps> = ({
             gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))`,
             gap: '6px',
             padding: '4px',
-            background: '#bbbbbb',
+            background: 'var(--puzzle-bg)',
             borderStyle: 'inset',
             boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)',
             boxSizing: 'border-box',
