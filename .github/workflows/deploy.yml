@@ -31,7 +31,7 @@ jobs:
             - name: Move WASM pkg into frontend folder
               run: |
                 rm -rf frontend/pkg
-                mv pkg frontend/
+                mv pkg frontend/src/
             
             - name: Setup Node.js
               uses: actions/setup-node@v6
