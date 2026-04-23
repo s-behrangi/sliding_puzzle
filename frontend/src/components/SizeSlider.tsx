@@ -11,9 +11,9 @@ const SizeSlider: React.FC<SizeSliderProps> = ({
     n,
     setN,
 }) => {
-    const [val, setVal] = useState(n);
+    const [_val, setVal] = useState(n);
 
-    const handleChange = (e: Event, value: number) => {
+    const handleChange = (_e: Event, value: number) => {
         setVal(Number(value));
         setN(Number(value));
     }
