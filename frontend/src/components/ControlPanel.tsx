@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import SizeSlider from './SizeSlider';
+import ThemeRadio from './ThemeRadio';
 import './ControlPanel.css';
 
 interface ControlPanelProps {
@@ -52,6 +53,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   Reset
               </button>
             </div>
+            <ThemeRadio/>
         </div>
     )
 };

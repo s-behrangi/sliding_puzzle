@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Theme = 'grey' | 'lavender';
+export type Theme = 'grey' | 'lavender' | 'fall' | 'forest' | 'sea' | 'bubblegum';
 
 const ThemeContext = createContext<{
     theme: Theme;
@@ -8,7 +8,7 @@ const ThemeContext = createContext<{
 } | null>(null);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>('lavender');
+    const [theme, setTheme] = useState<Theme>('grey');
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
