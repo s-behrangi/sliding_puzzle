@@ -14,12 +14,15 @@
 
 .top-right-text {
     font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0px 4px 0px 4px;
 }
 
 .top-right-text p {
     margin: 0;
     text-align: justify;
     line-height: 1.4;
+    color: var(--surface-text);
 }
 
 .top-right {

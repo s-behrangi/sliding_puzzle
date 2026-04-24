@@ -9,37 +9,6 @@
     background-color: var(--panel-bg);
 }
 
-.MuiTab-root {
-  text-transform: none;
-  min-width: 0;
-  font-weight: 400; /* Regular weight */
-  color: rgba(0, 0, 0, 0.85);
-  background-color: var(--button-bg);
-  border-width: 1px;
-  border-style: outset;
-}
-
-/* Hover state */
-.MuiTab-root:hover {
-  color: #000000;
-}
-
-/* Selected state (active tab) */
-.MuiTab-root.Mui-selected {
-  color: #000000;
-  background-color: var(--button-pressed);
-  border-color: black;
-  border: inset;
-  box-sizing: border-box;
-
-  font-weight: 500; /* Medium weight */
-}
-
-/* Focus visible state */
-.MuiTab-root.Mui-focusVisible {
-  background-color: #d1eaff;
-}
-
 .MuiTabs-indicator {
     display: none;
 }

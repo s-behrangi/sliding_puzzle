@@ -21,14 +21,14 @@ const idastarText = (
   <div className="solution-text">
     <p className="restriction-text">Restricted to <b>4×4</b>.</p>
     <p>The <b>Iterative Deepening Algorithm</b> uses a  <b>Depth-First Search</b> to yield an <b>optimal</b> solution. The * indicates that we are using a heuristic—a rigorous guess of how close the board is to being solved. This particular heuristic uses <b>Pattern Databases</b> (PDBs), which is the current state-of-the-art. A PDB breaks the board down into groups of tiles and pre-computes how many moves it would take to arrive at each possible configuration of each group.</p>
-    <p>However, the PDBs take up space, imposing a different kind of limit on what can be solved. The algorithm here uses a 5x5x5 breakdown of the 4×4 puzzle, which is both efficient and compact (1.5mB). However, the most efficient breakdown would be a 7×8 breakdown, which would take about half a gigabyte. Therefore, while this algorithm generally outperforms A*, it may still struggle.</p>
+    <p>Unfortunately, PDBs take up space, imposing a different kind of limit on what can be solved. The algorithm here uses a 5/5/5 breakdown of the 4×4 puzzle, which is both efficient and compact (1.5mB). However, the most efficient breakdown would be a 7/8 breakdown, which would take about half a gigabyte. Therefore, while this algorithm generally outperforms A*, it may still struggle.</p>
   </div>
 );
 
 const precompText = (
   <div className="solution-text">
     <p className="restriction-text">Restricted to <b>2×2</b> or <b>3×3</b>.</p>
-    <p> There are 9! = 362,880 ways to configure a 3×3 puzzle. However, due to a property called <b>parity</b>, only half of these states are reachable from the solution; thus, only half these states are themselves solvable. Therefore, there are only 181,440 relevant configurations, while for the 2×2, there are only <code>4!/2 = 12</code> states.</p>
+    <p> There are 9! = 362,880 ways to configure a 3×3 puzzle. However, due to a property called <b>parity</b>, only half of these states are reachable from the solution; thus, only half these states are themselves solvable. This means there are only 181,440 configurations we care about, while for the 2×2, there are only <code>4!/2 = 12</code> states.</p>
     
     <p>It is trivial for a computer to calculate the shortest path to each of these states, and storing the results takes just a couple hundred kilobytes. The precomputed moves can then be walked back (<b>optimally</b>) from any scrambled state to the solution almost instantaneously.</p>
 
@@ -83,6 +83,7 @@ interface SolverPanelProps {
   activePlayback: boolean;
   playbackType: string;
   playbackSpeed: number;
+  solving: number;
 }
 
 const SolverPanel: React.FC<SolverPanelProps> = ({
@@ -97,6 +98,7 @@ const SolverPanel: React.FC<SolverPanelProps> = ({
   activePlayback,
   playbackType,
   playbackSpeed,
+  solving,
 }) => {
     const theme = useTheme();
     const [selected, setSelected] = useState(0);
@@ -147,6 +149,7 @@ const SolverPanel: React.FC<SolverPanelProps> = ({
                           '&.Mui-selected': {
                             fontWeight: '800',
                             color: 'var(--button-txt)',
+                            backgroundColor: 'var(--button-pressed)',
                             borderStyle: 'solid',
                             borderWidth: '3px',
                             borderTopColor: 'var(--button-inset-dark)',
@@ -176,6 +179,7 @@ const SolverPanel: React.FC<SolverPanelProps> = ({
                   activePlayback={activePlayback}
                   playbackType={playbackType}
                   playbackSpeed={playbackSpeed}
+                  solving={solving}
                 />
               </TabPanel>
             ))}

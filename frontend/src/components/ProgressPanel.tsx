@@ -5,15 +5,19 @@ import './ProgressPanel.css';
 interface ProgressPanelProps {
     isSolved: boolean,
     isActive: boolean,
+    setActive: (t: boolean) => void,
     moveCount: number,
     distances: number[],
+    setMoveCount: (n: number) => void,
 }
 
 const ProgressPanel: React.FC<ProgressPanelProps> = ({
     isSolved,
     isActive,
+    setActive,
     moveCount,
     distances,
+    setMoveCount,
 }) => {
 
     return (
@@ -28,11 +32,12 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({
              <div
               className='move-count-display'
             >
-                <span>Moves:</span><span>{moveCount}</span>
+                <span>Moves:</span><button className="move-count-button" onClick={() => setMoveCount(0)}>{moveCount}</button>
             </div>
             <Stopwatch
               isSolved={isSolved}
               isActive={isActive}
+              setActive={setActive}
             />
             <div
               className='distances-display'

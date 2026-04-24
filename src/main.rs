@@ -3,8 +3,8 @@ use std::time::Instant;
 
 fn main() {
     
-    let mut puzzle = SlidingPuzzle::new(4);
-    let mut puzzle = SlidingPuzzle::from_flat(vec![8, 2, 7, 11, 14, 0, 3, 10, 4, 13, 1, 6, 12, 9, 15, 5]);
+    let mut puzzle = SlidingPuzzle::new(2);
+    //let mut puzzle = SlidingPuzzle::from_flat(vec![8, 2, 7, 11, 14, 0, 3, 10, 4, 13, 1, 6, 12, 9, 15, 5]);
     println!("\nOriginal puzzle:\n");
     puzzle.print_grid();
     puzzle.scramble_shuffle();

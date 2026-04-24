@@ -50,7 +50,7 @@ const Tile: React.FC<TileProps> = ({
           tabIndex={isInteractive ? 0 : -1}
           aria-label={isEmpty ? undefined : `Tile ${val}`}
           aria-disabled={!isInteractive}
-          style={{ '--tile-index': idx } as React.CSSProperties}
+          style={{ '--tile-index': idx, 'borderWidth': 40/n, 'borderRadius': 20/n} as React.CSSProperties}
         >
             {!isEmpty && <span className={styles.number} style={{ 'fontSize': 200/n } as React.CSSProperties}>{val}</span>}
         </div>

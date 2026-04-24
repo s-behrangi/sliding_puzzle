@@ -15,6 +15,10 @@
     line-height: 1;
 }
 
+.solve-button {
+    width: 60px;
+}
+
 .sol-move-count {
     width: 100px;
     padding-right: 6px;

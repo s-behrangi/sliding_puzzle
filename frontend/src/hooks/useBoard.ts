@@ -10,6 +10,7 @@ export function useBoard(startN: number = 3) {
     const [solved, setSolved] = useState(true);
     const [isActive, setIsActive] = useState<boolean>(false);
     const [distances, setDistances] = useState<number[]>([0, 0, 0]);
+    const [solving, setSolving] = useState(0);
     const solutions = useSolution(setBoard);
 
     const worker = useWorker();
@@ -74,6 +75,19 @@ export function useBoard(startN: number = 3) {
     }, [n])
 
     const solve = useCallback(async (alg: string) => {
+        switch (alg) {
+            case 'astar':
+                setSolving(1);
+                break;
+            case 'idastar':
+                setSolving(2);
+                break;
+            case 'precomp':
+                setSolving(3);
+                break;
+            default:
+                setSolving(4);
+        }
         try {
             const solution = await worker.solve(board, alg);
             solutions.updateSolution(
@@ -86,6 +100,7 @@ export function useBoard(startN: number = 3) {
         } catch (err) {
             console.error('Solve failed:', err);
         }
+        setSolving(0);
     }, [board])
 
     return {
@@ -99,9 +114,12 @@ export function useBoard(startN: number = 3) {
         switchTiles,
         scrambleBoard,
         isActive,
+        setIsActive,
         solve,
         solutions,
         setBoard,
         distances,
+        setMoveCount,
+        solving,
     };
 }

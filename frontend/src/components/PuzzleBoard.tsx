@@ -23,12 +23,15 @@ const PuzzleBoard: React.FC<PuzzleBoardProps> = ({
             display: 'grid',
             aspectRatio: '1/1',
             gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))`,
-            gap: '6px',
-            padding: '4px',
             background: 'var(--puzzle-bg)',
-            borderStyle: 'inset',
-            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.05)',
+            borderStyle: 'solid',
+            borderTopColor: 'var(--puzzle-border-dark)',
+            borderLeftColor: 'var(--puzzle-border-dark)',
+            borderRightColor: 'var(--puzzle-border-light)',
+            borderBottomColor: 'var(--puzzle-border-light)',
+            boxShadow: 'inset 0 2px 4px var(--puzzle-border-shadow)',
             boxSizing: 'border-box',
+            borderRadius: '2px',
           }}
         >
             {board.map((val, idx) => (

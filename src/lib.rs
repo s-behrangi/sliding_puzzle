@@ -326,7 +326,6 @@ impl SlidingPuzzle {
     }
 
 
-
     pub fn wasm_get_grid(&self) -> Vec<u8> {
         self.grid.clone()
     }
@@ -470,7 +469,7 @@ impl SlidingPuzzle {
         
         let idx = |x: usize, y: usize| x * self.n + y;
         
-        if self.n == 2 { return Self::follow_precompute(self.grid.clone(), 2); } //not currently supported
+        if self.n == 2 { return Self::follow_precompute(self.grid.clone(), 2); }
 
         /* we will be performing operations on this state, since we return a list of moves without solving */
         let mut state = self.grid.clone();

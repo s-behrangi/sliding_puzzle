@@ -5,11 +5,13 @@ import './Stopwatch.css'
 interface StopwatchProps {
     isSolved: boolean;
     isActive: boolean;
+    setActive: (t: boolean) => void;
 }
 
 const Stopwatch: React.FC<StopwatchProps> = ({
     isSolved,
     isActive,
+    setActive,
 }) => {
     const timer = useStopwatch();
 
@@ -25,13 +27,23 @@ const Stopwatch: React.FC<StopwatchProps> = ({
         }
     }, [ isSolved, isActive])
 
+    const handleReset = () => {
+        setActive(false);
+        timer.reset();
+    }
+
+    const handlePause = () => {
+        setActive(false);
+        timer.pause();
+    }
+
     return (
         <div
         className="stopwatch"
         >
             <button
               className="timer-reset-button"
-              onClick={timer.reset}
+              onClick={handleReset}
               aria-label="reset timer"
             >
               ■
@@ -40,7 +52,7 @@ const Stopwatch: React.FC<StopwatchProps> = ({
             
             <button
               className="timer-pause-button"
-              onClick={timer.pause}
+              onClick={handlePause}
               aria-label="pause timer"
             >
                 ⏯

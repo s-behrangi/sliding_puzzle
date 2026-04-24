@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './SolutionPane.css';
 
 
@@ -15,6 +15,7 @@ interface SolutionPaneProps {
     activePlayback: boolean;
     playbackType: string;
     playbackSpeed: number;
+    solving: number;
 }
 
 const SolutionPane: React.FC<SolutionPaneProps> = ({
@@ -30,18 +31,46 @@ const SolutionPane: React.FC<SolutionPaneProps> = ({
     activePlayback,
     playbackType,
     playbackSpeed,
+    solving,
 }) => { 
     const [solMoves, setSolMoves] = useState(0);
-    const [canSolve, setCanSolve] = useState(!activePlayback);
+    const [canSolve, setCanSolve] = useState(!activePlayback && solving === 0);
     const [canPlay, setCanPlay] = useState(!activePlayback || playbackType === solType)
+    const [solveText, setSolveText] = useState('Solve');
+    const [activeSolver, setActiveSolver] = useState(false);
+    let solveTextIntervalId = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
-        setCanSolve(!activePlayback);
-    }, [activePlayback]);
+        setCanSolve(!activePlayback && solving === 0);
+    }, [activePlayback, solving]);
 
     useEffect(() => {
-        setCanPlay(!activePlayback || playbackType === solType);
-    }, [activePlayback, playbackType]);
+        if (solving === ['', 'astar', 'idastar', 'precomp', 'reduction'].indexOf(solType)) {
+            setActiveSolver(true);
+        } else {
+            setActiveSolver(false);
+        }
+    }, [solving])
+
+    useEffect(() => {
+        if (activeSolver) {
+            let dots = 1;
+            setSolveText('.');
+            solveTextIntervalId.current = setInterval(() => {
+                setSolveText('.'.repeat((dots % 3 ) + 1));
+                dots ++;
+            }, 800);
+        } else {
+            if (solveTextIntervalId.current !== null) {
+                clearInterval(solveTextIntervalId.current);
+            }
+            setSolveText('Solve');
+        }
+    }, [activeSolver])
+
+    useEffect(() => {
+        setCanPlay((!activePlayback || playbackType === solType) && solving === 0);
+    }, [activePlayback, playbackType, solving]);
 
     useEffect(() => {
         setSolMoves(solState.solution.length);
@@ -65,11 +94,11 @@ const SolutionPane: React.FC<SolutionPaneProps> = ({
           className="solution-pane"
         >
             <button
-              className="solve-button"
+              className={`solve-button ${activeSolver ? 'active' : ''}`}
               onClick={onSolve}
-              {...(!canSolve && {disabled: true})}
+              {...((!canSolve && !activeSolver) && {disabled: true})}
             >
-                Solve
+                {solveText}
             </button>
             <div
               className="playback-buttons"

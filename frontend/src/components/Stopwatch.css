@@ -18,6 +18,7 @@
 .stopwatch .time {
     height: 100%;
     padding: 0px 5px 0px 5px;
+    border-color:var(--timer-border);
     border-style:groove;
     background-color: var(--timer-bg);
     box-sizing: border-box;
