@@ -22,6 +22,11 @@
 
 .control-panel-button-col {
     display: flex;
+    flex-direction: column;
+}
+
+.control-panel-button-row {
+    display: flex;
     flex-direction: row;
 }
 

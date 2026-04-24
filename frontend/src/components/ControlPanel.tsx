@@ -8,6 +8,8 @@ interface ControlPanelProps {
     reset: () => void,
     setN: (n: number) => void,
     scramble: (style: number) => void,
+    draggable: boolean,
+    toggleDrag: () => void,
 }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({
@@ -15,6 +17,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
     reset,
     setN,
     scramble,
+    draggable,
+    toggleDrag,
 }) => {
 
     const handleScrambleClick = useCallback(() => {
@@ -40,18 +44,33 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             <div
               className='control-panel-button-col'
             >
-              <button
-                className='scramble-button'
-                onClick={handleScrambleClick}
+              <div
+                className='control-panel-button-row'
               >
-                  Scramble
-              </button>
-              <button
-                className='reset-button'
-                onClick={reset}
+                <button
+                  className='scramble-button'
+                  onClick={handleScrambleClick}
+                >
+                    Scramble
+                </button>
+                <button
+                  className='reset-button'
+                  onClick={reset}
+                >
+                    Reset
+                </button>
+              </div>
+              <div
+                className='control-panel-button-row'
               >
-                  Reset
-              </button>
+                <button
+                  onClick={toggleDrag}
+                  className={`rearrange-button ${draggable ? 'active' : ''}`}
+                >
+                  Rearrange
+                </button>
+
+              </div>
             </div>
             <ThemeRadio/>
         </div>

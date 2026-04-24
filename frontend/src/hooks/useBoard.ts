@@ -11,9 +11,14 @@ export function useBoard(startN: number = 3) {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [distances, setDistances] = useState<number[]>([0, 0, 0]);
     const [solving, setSolving] = useState(0);
+    const [draggable, setDraggable] = useState(false);
     const solutions = useSolution(setBoard);
 
     const worker = useWorker();
+
+    const toggleDrag = useCallback(() => {
+        setDraggable(prev => ! prev);
+    }, []);
 
     /* maintain solved state */
     useEffect(() => {
@@ -121,5 +126,7 @@ export function useBoard(startN: number = 3) {
         distances,
         setMoveCount,
         solving,
+        draggable,
+        toggleDrag,
     };
 }

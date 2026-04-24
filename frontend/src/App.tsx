@@ -26,9 +26,11 @@ function App() {
         >
           <PuzzleBoard 
             board={board.board}
+            setBoard={board.setBoard}
             n={board.n}
             onTileClick={board.pushTile}
             isAnimating={board.solutions.playbackActive}
+            draggable={board.draggable}
           />
           <div
             className="top-right"
@@ -38,6 +40,8 @@ function App() {
               reset={board.reset}
               setN={board.setN}
               scramble={board.scrambleBoard}
+              draggable={board.draggable}
+              toggleDrag={board.toggleDrag}
             />
             <div
               className="top-right-text"
