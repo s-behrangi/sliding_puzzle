@@ -41,7 +41,7 @@ export function useWorker() {
     }, []);
 
     const isSolvable = useCallback(async (board: number[]) => {
-        return new Promise<Boolean>((resolve, reject) => {
+        return new Promise<boolean>((resolve, reject) => {
             if (!workerRef.current) return reject('Worker not ready');
 
             setIsWorking(true);

@@ -107,3 +107,13 @@ function getSwap(n: number, z: number, dir: number): number {
         default:return z
     }
 }
+
+export function verifyInputBoard(s: string): boolean {
+    const sentence = s.trim().split(/[ ,]+/);
+    const root = Math.floor(Math.sqrt(sentence.length));
+    return  root * root === sentence.length
+}
+
+export function gobbleInputBoard(s: string): number[] {
+    return s.trim().split(/[ ,]+/).map(val => Number(val))
+}

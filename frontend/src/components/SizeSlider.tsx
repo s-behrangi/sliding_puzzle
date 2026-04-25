@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -11,17 +11,22 @@ const SizeSlider: React.FC<SizeSliderProps> = ({
     n,
     setN,
 }) => {
-    const [_val, setVal] = useState(n);
+    const [val, setVal] = useState(n);
 
     const handleChange = (_e: Event, value: number) => {
         setVal(Number(value));
         setN(Number(value));
     }
 
+    useEffect(() => {
+        setVal(n);
+    }, [n])
+
     return (
         <Box sx={{ alignSelf: 'center', width: '80%' }}>
         <Slider
             aria-label="size"
+            value={val}
             defaultValue={3}
             getAriaValueText={() => `{val}`}
             shiftStep={30}

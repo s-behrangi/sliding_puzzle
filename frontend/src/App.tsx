@@ -10,7 +10,6 @@ import { ThemeProvider } from './ThemeContext.tsx';
 TODO:
 
 Add auto-termination for a solution that takes too long?
-Add ability to rearrange board
 Add tooltips?
 
 */
@@ -38,10 +37,11 @@ function App() {
             <ControlPanel
               n={board.n}
               reset={board.reset}
-              setN={board.setN}
+              setN={board.adjustN}
               scramble={board.scrambleBoard}
               draggable={board.draggable}
               toggleDrag={board.toggleDrag}
+              setBoard={board.fromBoard}
             />
             <div
               className="top-right-text"
@@ -63,6 +63,7 @@ function App() {
               distances={board.distances}
               setMoveCount={board.setMoveCount}
               setActive={board.setIsActive}
+              solvable={board.solvable}
             />
           </div>
           

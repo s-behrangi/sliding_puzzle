@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Stopwatch from './Stopwatch';
 import './ProgressPanel.css';
 
@@ -9,6 +9,7 @@ interface ProgressPanelProps {
     moveCount: number,
     distances: number[],
     setMoveCount: (n: number) => void,
+    solvable: boolean,
 }
 
 const ProgressPanel: React.FC<ProgressPanelProps> = ({
@@ -18,7 +19,19 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({
     moveCount,
     distances,
     setMoveCount,
+    solvable,
 }) => {
+    const [solvedText, setSolvedText] = useState(<b>Solved!</b>);
+
+    useEffect(() => {
+      if (isSolved) {
+        setSolvedText(<b>Solved!</b>);
+      } else if (solvable) {
+        setSolvedText(<span>Unsolved</span>);
+      } else {
+        setSolvedText(<b>Unsolvable</b>);
+      }
+    }, [isSolved, solvable])
 
     return (
         <div
@@ -27,7 +40,7 @@ const ProgressPanel: React.FC<ProgressPanelProps> = ({
             <span
               className='is-solved-display'
             >
-              {isSolved ? <b>Solved!</b> : "Unsolved"}
+              {solvedText}
             </span>
              <div
               className='move-count-display'

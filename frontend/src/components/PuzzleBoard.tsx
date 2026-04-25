@@ -70,6 +70,7 @@ const PuzzleBoard: React.FC<PuzzleBoardProps> = ({
         }
     };
 
+
     if (draggable) {
         return (
             <DndContext

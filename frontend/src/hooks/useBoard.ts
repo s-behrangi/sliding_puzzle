@@ -12,6 +12,7 @@ export function useBoard(startN: number = 3) {
     const [distances, setDistances] = useState<number[]>([0, 0, 0]);
     const [solving, setSolving] = useState(0);
     const [draggable, setDraggable] = useState(false);
+    const [solvable, setSolvable] = useState(true);
     const solutions = useSolution(setBoard);
 
     const worker = useWorker();
@@ -25,12 +26,18 @@ export function useBoard(startN: number = 3) {
         setSolved(isSolved(board));
     }, [board]);
 
-    /* respond to size updates */
+    /* maintan solvability */
     useEffect(() => {
-        setBoard(newBoard(n));
-        setMoveCount(0);
-        setIsActive(false);
-    }, [n])
+        const fetch = async () => {
+            try {
+                const canSolve = await worker.isSolvable(board);
+                setSolvable(canSolve);
+            } catch (error) {
+                console.error("Unable to evaluate solvability:", error);
+            }
+        };
+        fetch();
+    }, [board]);
 
     /* maintain changes to distances */
     useEffect(() => {
@@ -45,6 +52,21 @@ export function useBoard(startN: number = 3) {
         };
         fetch();
     }, [board])
+
+    const fromBoard = (board: number[]) => {
+        const n = Math.sqrt(board.length);
+        if (n >= 2 && n <= 12) {
+            setN(n);
+            setBoard(board);
+        }
+    }
+
+    const adjustN = (n: number) => {
+        setBoard(newBoard(n));
+        setMoveCount(0);
+        setIsActive(false);
+        setN(n);
+    }
 
     const reset = useCallback(() => {
         setBoard(newBoard(n));
@@ -113,7 +135,7 @@ export function useBoard(startN: number = 3) {
         n,
         moveCount,
         solved,
-        setN,
+        adjustN,
         reset,
         pushTile,
         switchTiles,
@@ -128,5 +150,7 @@ export function useBoard(startN: number = 3) {
         solving,
         draggable,
         toggleDrag,
+        fromBoard,
+        solvable,
     };
 }
