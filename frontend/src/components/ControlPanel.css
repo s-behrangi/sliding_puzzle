@@ -41,6 +41,7 @@
     background-color: var(--bg);
     height: 20px;
     font-family:'Courier New', Courier, monospace;
+    color: var(--panel-text);
 }
 
 .board-input:focus {

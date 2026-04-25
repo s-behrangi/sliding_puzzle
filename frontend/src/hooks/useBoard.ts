@@ -26,19 +26,6 @@ export function useBoard(startN: number = 3) {
         setSolved(isSolved(board));
     }, [board]);
 
-    /* maintan solvability */
-    useEffect(() => {
-        const fetch = async () => {
-            try {
-                const canSolve = await worker.isSolvable(board);
-                setSolvable(canSolve);
-            } catch (error) {
-                console.error("Unable to evaluate solvability:", error);
-            }
-        };
-        fetch();
-    }, [board]);
-
     /* maintain changes to distances */
     useEffect(() => {
         const hamman = getDistances(board);
@@ -46,8 +33,10 @@ export function useBoard(startN: number = 3) {
             try {
                 const lin = await worker.distance(board);
                 setDistances([hamman[0], hamman[1], lin]);
+                const canSolve = await worker.isSolvable(board);
+                setSolvable(canSolve);
             } catch (error) {
-                console.error("Unable to get linear distance:", error);
+                console.error("Unable to get linear distance and/or evaluate solvability:", error);
             }
         };
         fetch();
