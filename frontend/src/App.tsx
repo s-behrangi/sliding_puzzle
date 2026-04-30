@@ -46,14 +46,17 @@ function App() {
             <div
               className="top-right-text"
             >
-              <p>
+              <p className="instructions">
                 <b>Above:</b> Configure the puzzle
               </p>
-              <p>
+              <p className="instructions">
                 <b>Below:</b> Track progress
               </p>
-              <p>
+              <p className="instructions">
                 <b>Bottom:</b> Use a solver
+              </p>
+              <p className="github-link">
+                <a href="https://github.com/s-behrangi/sliding_puzzle">Source/Read More</a>
               </p>
             </div>
             <ProgressPanel

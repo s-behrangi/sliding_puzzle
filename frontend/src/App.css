@@ -18,11 +18,31 @@
     padding: 0px 4px 0px 4px;
 }
 
-.top-right-text p {
+.instructions {
     margin: 0;
     text-align: justify;
     line-height: 1.4;
     color: var(--surface-text);
+}
+
+.top-right-text a {
+    color: inherit;
+    font-weight: bold;
+}
+
+.top-right-text a:visited {
+    color: inherit;
+    font-weight: bold;
+}
+
+.top-right-text a:active {
+    color: inherit;
+    font-weight: bold;
+}
+
+.github-link {
+    margin: 1px 0px 0px 0px;
+    text-align: center;
 }
 
 .top-right {
